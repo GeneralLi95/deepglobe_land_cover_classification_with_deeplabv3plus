@@ -5,3 +5,4 @@ dataset/.DS_Store
 .DS_Store
 dataset/
 *.pyc
+ckpts
