@@ -5,39 +5,24 @@
 @file: land_train.py 
 @time: 2018/12/19 
 """
-
-# from utils.data_utils import DataSet
-from utils.data_utils import DataSet
-
 import numpy as np
 import os
+import tensorflow as tf
+from utils.data_utils import DataSet, read_data
+from tensorflow.python.framework import ops
+ops.reset_default_graph()
 
 
-train_path = 'dataset/land_train_sat'
+# prepare data
+# train_path has 643 img and labels
+# valid_path has 160 img and labels
+train_path = 'dataset/train'
+valid_path = 'dataset/valid'
 
 
-def read_data(path):
-    """
 
-    :param path:
-    :return: a dict with key == train_name value == label_name
-    """
-
-    print(os.path.exists(path))
-    a = os.listdir(train_path)
-    train_name_list = [x for x in a if x[-3:] == 'jpg']
-    label_name_list = [x for x in a if x[-3:] == 'png']
-    train_name_list.sort()
-    label_name_list.sort()
-    train_name_list = [(path + '/' + x) for x in train_name_list]
-    label_name_list = [(path + '/' + x) for x in label_name_list]
-    train_label_dict = dict(zip(train_name_list, label_name_list))
-    return train_name_list, label_name_list
-
-a , b = read_data(train_path)
-print(a)
-print(b)
-a = np.array(a)
-b = np.array(b)
-print(a)
-print(b)
+train_img, train_label = read_data(train_path)
+valid_img, valid_label = read_data(valid_path)
+dataset_tr = DataSet(image_path=train_img, label_path=train_label)
+dataset_val = DataSet(image_path=valid_img, label_path=valid_label)
+print('Data input success.')

@@ -4,3 +4,4 @@ dataset/.DS_Store
 *.xml
 .DS_Store
 dataset/
+*.pyc
