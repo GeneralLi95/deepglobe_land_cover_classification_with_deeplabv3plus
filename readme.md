@@ -1,14 +1,15 @@
 # DeepGlobe Land Cover Classification Challenge 土地利用分类竞赛
 ## Timeline 工作时间线
--[ ] Dataset 数据集准备
-    -[x] Load file path文件目录导入
-    -[x] 底图与标注文件的对应关系
-    -[ ] 标注文件的格式化
-    -[ ] 
--[ ] DeepLab 模型准备
-    -[ ] 迁移学习
--[ ] Test   测试
--[ ] Result 结果展示
+
+- [ ] Dataset 数据集准备
+    - [x] Load file path文件目录导入
+    - [x] 底图与标注文件的对应关系
+    - [ ] 标注文件的格式化
+    - [ ] one-hot 编码
+- [ ] DeepLab 模型准备
+    - [ ] 迁移学习
+- [ ] Test   测试
+- [ ] Result 结果展示
  ## DATASET 数据集
 ### DATA 数据
 * The training data for Land Cover Challenge contains 803 satellite imagery in RGB, size 2448x2448.
