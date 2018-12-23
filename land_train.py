@@ -12,6 +12,13 @@ from utils.data_utils import DataSet, read_data
 from tensorflow.python.framework import ops
 ops.reset_default_graph()
 
+class args:
+    batch_size = 32
+    lr = 0.0002
+    display = 1
+    weight_decay = 0.00001
+    model_name = 'deeplab_v3'
+    batch_norm_decay = 0.95
 
 # prepare data
 # train_path has 643 img and labels

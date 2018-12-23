@@ -30,8 +30,8 @@
     * 未知土地： 0，0，0，云层遮盖或其他因素
 * 卫星图片和与其对应的标注图片的命名格式为\<id>_sat.jpg和\<id>_mask.png,\<id>是一个随机的整数。
 * 需要注意：
-    * 由于压缩，掩码图像的值可能不是准确的目标颜色值。当转换到标签时，请将每个R/G/B通道按128阈值二值化。
-    * 高分辨率卫星图像的土地覆被分割仍然是一个探索性的任务，由于标注多类分割掩码的代价，标签也远远不够完善。此外，我们故意不标注道路，因为它已经包含在一个单独的道路提取挑战赛中。
+    * 由于压缩，标注图像的值可能不是准确的目标颜色值。当转换到标签时，请将每个R/G/B通道按128阈值二值化。
+    * 高分辨率卫星图像的土地覆被分割仍然是一个探索性的任务，由于标注多类分割的代价很大，标签还远远不够完善。此外，我们故意不标注道路，因为它已经包含在一个单独的道路提取挑战赛中。
 # Evaluation Metric 评价指标
 * We will use pixel-wise mean Intersection over Union (mIoU) score as our evaluation metric.
     * IoU is defined as: True Positive / (True Positive + False Positive + False Negative).
