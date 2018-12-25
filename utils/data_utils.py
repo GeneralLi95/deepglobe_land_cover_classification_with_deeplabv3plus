@@ -11,23 +11,38 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 
+# def read_data(path):
+#     """
+#
+#     :param path:
+#     :return: a dict with key == train_name value == label_name
+#     """
+#
+#     # print(os.path.exists(path))
+#     a = os.listdir(path)
+#     img_name_list = [x for x in a if x[-3:] == 'jpg']
+#     label_name_list = [x for x in a if x[-3:] == 'png']
+#     img_name_list.sort()
+#     label_name_list.sort()
+#     img_name_list = [(path + '/' + x) for x in img_name_list]
+#     label_name_list = [(path + '/' + x) for x in label_name_list]
+#     train_label_dict = dict(zip(img_name_list, label_name_list))
+#     return img_name_list, label_name_list
+
 def read_data(path):
     """
 
     :param path:
-    :return: a dict with key == train_name value == label_name
+    :return: a name_list
     """
 
     # print(os.path.exists(path))
     a = os.listdir(path)
-    img_name_list = [x for x in a if x[-3:] == 'jpg']
-    label_name_list = [x for x in a if x[-3:] == 'png']
-    img_name_list.sort()
-    label_name_list.sort()
-    img_name_list = [(path + '/' + x) for x in img_name_list]
-    label_name_list = [(path + '/' + x) for x in label_name_list]
-    train_label_dict = dict(zip(img_name_list, label_name_list))
-    return img_name_list, label_name_list
+    name_list = [x for x in a if x[-3:] == 'jpg' or x[-3:] == 'png']
+    name_list.sort()
+    name_list = [(path + '/' + x) for x in name_list]
+    return name_list
+
 
 class DataSet():
     '''

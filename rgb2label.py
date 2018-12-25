@@ -10,6 +10,8 @@ The mask.png are RGB img. We have to change it into a one-chanel img.
 
 import numpy as np
 import cv2
+from utils.data_utils import read_data
+from tqdm import tqdm
 
 def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False):
     img = cv2.imread(input_path)
@@ -33,9 +35,28 @@ def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False)
 
 my_codes = {(0, 255, 255): 0, (255, 255, 0): 1, (255, 0, 255): 2, (0, 255, 0): 3, (0,0,255): 4, (255, 255, 255): 5, (0,0,0): 6}
 
+train_mask_path = 'dataset/train_mask'
+train_label_path = 'dataset/train_label'
 
-img_path = ('119_mask.png')
-label_path = ('119_label.png')
-rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
-print(rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes, one_hot_encode = True))
+valid_mask_path = 'dataset/valid_mask'
+valid_label_path = 'dataset/valid_label'
+
+train_mask = read_data(train_mask_path)
+valid_mask = read_data(valid_mask_path)
+
+# generate train label
+for x in tqdm(train_mask):
+    img_path = x
+    number = img_path.split('/')[2].split('_')[0]
+    label_path = train_label_path + '/' + number + '_label.png'
+    rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
+
+# generate valid label
+for x in tqdm(valid_mask):
+    img_path = x
+    number = img_path.split('/')[2].split('_')[0]
+    label_path = valid_label_path + '/' + number + '_label.png'
+    rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
+
+
 

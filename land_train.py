@@ -23,13 +23,21 @@ class args:
 # prepare data
 # train_path has 643 img and labels
 # valid_path has 160 img and labels
-train_path = 'dataset/train'
-valid_path = 'dataset/valid'
+train_sat_path = 'dataset/train_sat'
+train_mask_path = 'dataset/train_mask'
+train_label_path = 'dataset/train_label'
+valid_sat_path = 'dataset/valid_sat'
+valid_mask_path = 'dataset/valid_mask'
+valid_label_path = 'dataset/valid_label'
 
 
 
-train_img, train_label = read_data(train_path)
-valid_img, valid_label = read_data(valid_path)
+train_img = read_data(train_sat_path)
+train_label = read_data(train_mask_path)
+valid_img = read_data(valid_sat_path)
+valid_label = read_data(valid_mask_path)
+print(train_img)
+print(train_label)
 dataset_tr = DataSet(image_path=train_img, label_path=train_label)
 dataset_val = DataSet(image_path=valid_img, label_path=valid_label)
 print('Data input success.')
