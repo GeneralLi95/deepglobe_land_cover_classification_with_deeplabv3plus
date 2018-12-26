@@ -20,7 +20,7 @@ ops.reset_default_graph()
 tf.logging.set_verbosity(tf.logging.INFO)
 
 class args:
-    batch_size = 32
+    batch_size = 2
     lr = 0.0002
     display = 1
     weight_decay = 0.00001
@@ -91,8 +91,8 @@ with tf.Session() as sess:
     sess.run(tf.local_variables_initializer())
     sess.run(tf.global_variables_initializer())
 
-    log_path = 'log/%s/' % args.model_name
-    model_path = 'ckpt/%s/' % args.model_name
+    log_path = 'logs/%s/' % args.model_name
+    model_path = 'ckpts/%s/' % args.model_name
     if not os.path.exists(model_path): os.makedirs(model_path)
     if not os.path.exists('./logs'): os.makedirs('./logs')
     if not os.path.exists(log_path): os.makedirs(log_path)
@@ -164,4 +164,4 @@ with tf.Session() as sess:
                 best_val_acc = total_acc_val / args.display
                 tf.logging.info('Save model successfully to "%s"!' % (model_path + 'model.ckpt'))
 
-            total_acc_tr, total_acc_val, total_loss_tr, total_loss_val, total_l2_loss = 0, 0, 0, 0, 0 
+            total_acc_tr, total_acc_val, total_loss_tr, total_loss_val, total_l2_loss = 0, 0, 0, 0, 0
