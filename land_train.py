@@ -20,7 +20,7 @@ ops.reset_default_graph()
 tf.logging.set_verbosity(tf.logging.INFO)
 
 class args:
-    batch_size = 2
+    batch_size = 16
     lr = 0.0002
     display = 1
     weight_decay = 0.00001
@@ -30,12 +30,12 @@ class args:
 # prepare data
 # train_path has 643 img and labels
 # valid_path has 160 img and labels
-train_sat_path = 'dataset/train_sat'
+train_sat_path = 'dataset/resize_train_sat'
 train_mask_path = 'dataset/train_mask'
-train_label_path = 'dataset/train_label'
-valid_sat_path = 'dataset/valid_sat'
+train_label_path = 'dataset/resize_train_label'
+valid_sat_path = 'dataset/resize_valid_sat'
 valid_mask_path = 'dataset/valid_mask'
-valid_label_path = 'dataset/valid_label'
+valid_label_path = 'dataset/resize_valid_label'
 
 
 
@@ -52,8 +52,8 @@ print('Data input success.')
 
 model = Deeplab_v3(batch_norm_decay=args.batch_norm_decay)
 
-image = tf.placeholder(tf.float32, [None, 2448, 2448, 3], name='input_x')
-label = tf.placeholder(tf.int32, [None, 2448, 2448])
+image = tf.placeholder(tf.float32, [None, 512, 512, 3], name='input_x')
+label = tf.placeholder(tf.int32, [None, 512, 512])
 lr = tf.placeholder(tf.float32)
 
 logits = model.forward_pass(image)
@@ -133,7 +133,7 @@ with tf.Session() as sess:
 
         # print log
         if step % args.display == 0:
-            tf.logging.info("Iter:%d, lr:%.6f, loss_tr: %.4f, acc_tr:%.4f, loss_val:%.4f, loss_val:%.4f, acc_val:$.4f"%
+            tf.logging.info("Iter:%d, lr:%.6f, loss_tr: %.4f, acc_tr:%.4f, loss_val:%.4f, acc_val:%.4f" %
                             (step,
                              learning_rate,
                              total_loss_val / args.display,

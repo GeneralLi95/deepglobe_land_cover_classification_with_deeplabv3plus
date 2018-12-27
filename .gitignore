@@ -6,3 +6,4 @@ dataset/.DS_Store
 dataset/
 *.pyc
 ckpts
+logs/
