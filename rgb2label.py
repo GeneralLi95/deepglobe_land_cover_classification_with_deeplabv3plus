@@ -31,7 +31,6 @@ def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False)
         result = one_hot_labels
 
     cv2.imwrite(output_path, result)
-    return result
 
 my_codes = {(0, 255, 255): 0, (255, 255, 0): 1, (255, 0, 255): 2, (0, 255, 0): 3, (0,0,255): 4, (255, 255, 255): 5, (0,0,0): 6}
 
@@ -49,7 +48,7 @@ for x in tqdm(train_mask):
     img_path = x
     number = img_path.split('/')[2].split('_')[0]
     label_path = train_label_path + '/' + number + '_label.png'
-    rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
+    print(rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes))
 
 # generate valid label
 for x in tqdm(valid_mask):

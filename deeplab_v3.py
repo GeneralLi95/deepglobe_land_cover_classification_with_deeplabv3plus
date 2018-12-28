@@ -28,7 +28,7 @@ class Deeplab_v3():
         self._batch_norm_decay = batch_norm_decay
         self._batch_norm_epsilon = batch_norm_epsilon
         self._is_training = tf.placeholder(tf.bool, name='is_training')
-        self.num_class = 5
+        self.num_class = 7
         self.filters = [64, 256, 512, 1024, 2048]
         self.strides = [2, 2, 1, 1]
         self.n = [3, 4, 6, 3]
@@ -60,7 +60,7 @@ class Deeplab_v3():
         # DeepLab_v3的部分
         with tf.variable_scope('DeepLab_v3'):
             x = self._atrous_spatial_pyramid_pooling(x)
-            x = self._conv(x, 1, 5, 1, 'logits', False, False)
+            x = self._conv(x, 1, 7, 1, 'logits', False, False)
             x = tf.image.resize_bilinear(x, size)
             return x
 
