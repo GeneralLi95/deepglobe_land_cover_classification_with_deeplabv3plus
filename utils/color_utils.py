@@ -39,5 +39,4 @@ def color_annotation(label_path, output_path):
     color[img==6] = [0, 0, 0]       # 黑色，未知土地，云层遮盖或其他因素
 
 
-
     cv2.imwrite(output_path,color)
