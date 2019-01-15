@@ -4,9 +4,6 @@ dataset/.DS_Store
 *.xml
 .DS_Store
 dataset/
+model/
+ini_checkpoints/
 *.pyc
-ckpts
-ckpts_result
-logs/
-logs1/
-test/
