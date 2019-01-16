@@ -5,13 +5,27 @@
 @file: rgb2label.py 
 @time: 2018/12/21
 The mask.png are RGB img. We have to change it into a one-chanel img.
-将3通道的RGB图像转换为单通道的index图像
+将3通道的RGB图像转换为单通道的图像
 """
 
 import numpy as np
 import cv2
-from utils.data_utils import read_data
+import os
 from tqdm import tqdm
+
+def read_data(path):
+    """
+
+    :param path:
+    :return: a name_list
+    """
+
+    # print(os.path.exists(path))
+    a = os.listdir(path)
+    name_list = [x for x in a if x[-3:] == 'jpg' or x[-3:] == 'png']
+    name_list.sort()
+    name_list = [(path + '/' + x) for x in name_list]
+    return name_list
 
 def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False):
     img = cv2.imread(input_path)

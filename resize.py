@@ -19,7 +19,5 @@ def convert(input_dir,output_dir,width, height):
         out.save(output_dir + file_name)
 
 if __name__ == "__main__":
-    convert('dataset/train_sat/','dataset/resize_train_sat/',256, 256)
-    convert('dataset/train_label/','dataset/resize_train_label/',256, 256)
-    convert('dataset/valid_sat/','dataset/resize_valid_sat/',256, 256)
-    convert('dataset/valid_label/','dataset/resize_valid_label/',256, 256)
+    # convert('dataset/train_sat/','dataset/resize_train_sat/',256, 256)
+    print("Use the convert function if you need.")
