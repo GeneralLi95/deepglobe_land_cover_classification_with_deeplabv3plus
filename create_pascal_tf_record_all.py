@@ -1,4 +1,7 @@
-"""Converts PASCAL dataset to TFRecords file format."""
+"""
+Converts PASCAL dataset to TFRecords file format.
+Get only one tfrecord file which means you have to comment the 'evalution' in train.py
+"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -30,7 +33,7 @@ parser.add_argument('--train_data_list', type=str, default='./dataset/train.txt'
 parser.add_argument('--valid_data_list', type=str, default='./dataset/val.txt',
                     help='Path to the file listing the validation data.')
 
-parser.add_argument('--image_data_dir', type=str, default='land-train',
+parser.add_argument('--image_data_dir', type=str, default='land_train',
                     help='The directory containing the image data.')
 
 parser.add_argument('--label_data_dir', type=str, default='train_label',

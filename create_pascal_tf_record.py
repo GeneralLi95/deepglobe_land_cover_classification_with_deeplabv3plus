@@ -29,7 +29,7 @@ parser.add_argument('--train_data_list', type=str, default='./dataset/train.txt'
 parser.add_argument('--valid_data_list', type=str, default='./dataset/val.txt',
                     help='Path to the file listing the validation data.')
 
-parser.add_argument('--image_data_dir', type=str, default='land-train',
+parser.add_argument('--image_data_dir', type=str, default='land_train',
                     help='The directory containing the image data.')
 
 parser.add_argument('--label_data_dir', type=str, default='label',
@@ -130,13 +130,22 @@ def main(unused_argv):
         raise ValueError("Missing Augmentation label directory. "
                          "You may download the augmented labels from the link (Thanks to DrSleep): "
                          "https://www.dropbox.com/s/oeu149j8qtbs1x0/SegmentationClassAug.zip")
-    # train_examples = dataset_util.read_examples_list(FLAGS.train_data_list)
-    # val_examples = dataset_util.read_examples_list(FLAGS.valid_data_list)
-    train_file_list = os.listdir(image_dir)
-    train_examples = np.array([file.split('_')[0] for file in train_file_list if file.endswith('.jpg')], dtype=object)
 
-    val_file_list = os.listdir(label_dir)
-    val_examples = np.array([file.split('_')[0] for file in val_file_list if file.endswith('.png')], dtype=object)
+
+    """
+        This comment code use train.txt val.txt to find the train or value files. If you don't have this two files then use 'os.listdir' to get your filelist. 
+    
+    train_examples = dataset_util.read_examples_list(FLAGS.train_data_list)
+    val_examples = dataset_util.read_examples_list(FLAGS.valid_data_list)
+    """
+
+    file_list = os.listdir(label_dir)
+    file_names = np.array([file.split('_')[0] for file in file_list if file.endswith('.png')], dtype=object)
+
+    val_ = np.random.choice(len(file_names), int(len(file_names) * 0.1), replace=False)
+    val_examples = file_names[val_]
+    train_examples = np.delete(file_names, val_)
+
 
     train_output_path = os.path.join(FLAGS.output_path, 'voc_train.record')
     val_output_path = os.path.join(FLAGS.output_path, 'voc_val.record')
