@@ -93,10 +93,8 @@ _MOMENTUM = 0.9
 
 _BATCH_NORM_DECAY = 0.9997
 
-_SIGMA = 8
-
 _NUM_IMAGES = {
-    'train': 723,
+    'train': 643,
     'validation': 80,
 }
 
@@ -246,8 +244,7 @@ def main(unused_argv):
             'power': _POWER,
             'momentum': _MOMENTUM,
             'freeze_batch_norm': FLAGS.freeze_batch_norm,
-            'initial_global_step': FLAGS.initial_global_step,
-            'sigma': _SIGMA
+            'initial_global_step': FLAGS.initial_global_step
         })
 
     for _ in range(FLAGS.train_epochs // FLAGS.epochs_per_eval):
@@ -274,7 +271,7 @@ def main(unused_argv):
             hooks=train_hooks,
             # steps=1  # For debug
         )
-        '''
+
         tf.logging.info("Start evaluation.")
         # Evaluate the model and print results
         eval_results = model.evaluate(
@@ -284,7 +281,7 @@ def main(unused_argv):
             # steps=1  # For debug
         )
         print(eval_results)
-        '''
+
 
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)

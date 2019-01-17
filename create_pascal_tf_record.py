@@ -32,7 +32,7 @@ parser.add_argument('--valid_data_list', type=str, default='./dataset/val.txt',
 parser.add_argument('--image_data_dir', type=str, default='land_train',
                     help='The directory containing the image data.')
 
-parser.add_argument('--label_data_dir', type=str, default='label',
+parser.add_argument('--label_data_dir', type=str, default='onechannel_label',
                     help='The directory containing the augmented label data.')
 
 
@@ -100,7 +100,7 @@ def create_tf_record(output_filename,
         if idx % 50 == 0:
             tf.logging.info('On image %d of %d', idx, len(examples))
         image_path = os.path.join(image_dir, example + '_sat.jpg')
-        label_path = os.path.join(label_dir, example + '_mask.png')
+        label_path = os.path.join(label_dir, example + '_label.png')
 
         if not os.path.exists(image_path):
             tf.logging.warning('Could not find %s, ignoring example.', image_path)
