@@ -46,30 +46,22 @@ def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False)
 
     cv2.imwrite(output_path, result)
 
-my_codes = {(0, 255, 255): 0, (255, 255, 0): 1, (255, 0, 255): 2, (0, 255, 0): 3, (0,0,255): 4, (255, 255, 255): 5, (0,0,0): 6}
+my_codes = {(0, 255, 255): 0, (255, 255, 0): 1, (255, 0, 255): 2, (0, 255, 0): 3, (0, 0,255): 4, (255, 255, 255): 5, (0,0,0): 6}
 
-train_mask_path = 'dataset/train_mask'
-train_label_path = 'dataset/train_label'
+mask_path = 'dataset/cleared_label'
+one_channel_label_path = 'dataset/onechannel_label'
 
-valid_mask_path = 'dataset/valid_mask'
-valid_label_path = 'dataset/valid_label'
+mask_filelist = read_data(mask_path)
 
-train_mask = read_data(train_mask_path)
-valid_mask = read_data(valid_mask_path)
 
-# generate train label
-for x in tqdm(train_mask):
+# generate onechannel_label
+for x in tqdm(mask_filelist):
     img_path = x
     number = img_path.split('/')[2].split('_')[0]
-    label_path = train_label_path + '/' + number + '_label.png'
-    print(rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes))
-
-# generate valid label
-for x in tqdm(valid_mask):
-    img_path = x
-    number = img_path.split('/')[2].split('_')[0]
-    label_path = valid_label_path + '/' + number + '_label.png'
+    label_path = one_channel_label_path + '/' + number + '_label.png'
     rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
+
+
 
 
 
