@@ -22,7 +22,7 @@ def read_data(path):
 
     # print(os.path.exists(path))
     a = os.listdir(path)
-    name_list = [x for x in a if x[-3:] == 'jpg' or x[-3:] == 'png']
+    name_list = [x for x in a if  x[-3:] == 'png']
     name_list.sort()
     name_list = [(path + '/' + x) for x in name_list]
     return name_list
@@ -48,7 +48,7 @@ def rgb2label(input_path, output_path, color_codes = None, one_hot_encode=False)
 
 my_codes = {(0, 255, 255): 0, (255, 255, 0): 1, (255, 0, 255): 2, (0, 255, 0): 3, (0, 0,255): 4, (255, 255, 255): 5, (0,0,0): 6}
 
-mask_path = 'dataset/cleared_label'
+mask_path = 'dataset/land_train'
 one_channel_label_path = 'dataset/onechannel_label'
 
 mask_filelist = read_data(mask_path)
