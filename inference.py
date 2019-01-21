@@ -21,7 +21,7 @@ from tensorflow.python import debug as tf_debug
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--data_dir', type=str, default='dataset/VOCdevkit/VOC2012/JPEGImages',
+parser.add_argument('--data_dir', type=str, default='dataset/inference_in',
                     help='The directory containing the image data.')
 
 parser.add_argument('--output_dir', type=str, default='./dataset/inference_output',
@@ -30,7 +30,7 @@ parser.add_argument('--output_dir', type=str, default='./dataset/inference_outpu
 parser.add_argument('--infer_data_list', type=str, default='./dataset/sample_images_list.txt',
                     help='Path to the file listing the inferring images.')
 
-parser.add_argument('--model_dir', type=str, default='./model',
+parser.add_argument('--model_dir', type=str, default='./model_final',
                     help="Base directory for the model. "
                          "Make sure 'model_checkpoint_path' given in 'checkpoint' file matches "
                          "with checkpoint name.")
@@ -70,9 +70,11 @@ def main(unused_argv):
             'num_classes': _NUM_CLASSES,
         })
 
-    examples = dataset_util.read_examples_list(FLAGS.infer_data_list)
+    # examples = dataset_util.read_examples_list(FLAGS.infer_data_list)
+    # image_files = [os.path.join(FLAGS.data_dir, filename) for filename in examples]
+    examples = os.listdir(FLAGS.data_dir)
     image_files = [os.path.join(FLAGS.data_dir, filename) for filename in examples]
-
+    print(image_files)
     predictions = model.predict(
         input_fn=lambda: preprocessing.eval_input_fn(image_files),
         hooks=pred_hooks)
