@@ -94,7 +94,7 @@ _MOMENTUM = 0.9
 _BATCH_NORM_DECAY = 0.9997
 
 _NUM_IMAGES = {
-    'train': 643,
+    'train': 723,
     'validation': 80,
 }
 
@@ -272,15 +272,15 @@ def main(unused_argv):
             # steps=1  # For debug
         )
 
-        tf.logging.info("Start evaluation.")
-        # Evaluate the model and print results
-        eval_results = model.evaluate(
-            # Batch size must be 1 for testing because the images' size differs
-            input_fn=lambda: input_fn(False, FLAGS.data_dir, 1),
-            hooks=eval_hooks,
-            # steps=1  # For debug
-        )
-        print(eval_results)
+        # tf.logging.info("Start evaluation.")
+        # # Evaluate the model and print results
+        # eval_results = model.evaluate(
+        #     # Batch size must be 1 for testing because the images' size differs
+        #     input_fn=lambda: input_fn(False, FLAGS.data_dir, 1),
+        #     hooks=eval_hooks,
+        #     # steps=1  # For debug
+        # )
+        # print(eval_results)
 
 
 if __name__ == '__main__':
