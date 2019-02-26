@@ -8,3 +8,5 @@ model/
 ini_checkpoints/
 *.pyc
 model_final/
+model1.23
+model1.24

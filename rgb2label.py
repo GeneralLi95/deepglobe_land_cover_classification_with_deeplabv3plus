@@ -31,7 +31,7 @@ def color2annotation(input_path, output_path):
     scipy.misc.imsave(output_path, cat_image)
     pass
 
-one_channel_label_path = 'dataset/test'
+one_channel_label_path = 'dataset/land_train'
 test_mask_path = 'dataset/onechannel_label'
 
 filelist = os.listdir(one_channel_label_path)
