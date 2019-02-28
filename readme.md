@@ -29,4 +29,8 @@
 
 ## Result 
 
+## Acknowledgment
+This repo borrows code heavily from
+- [rishizek's repo tensorflow-deeplab-v3-plus](https://github.com/rishizek/tensorflow-deeplab-v3-plus)
+
 
