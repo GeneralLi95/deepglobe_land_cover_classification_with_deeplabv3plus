@@ -1,15 +1,5 @@
 # DeepGlobe Land Cover Classification Challenge 土地利用分类竞赛
-## 工作时间线
 
-- [ ] Dataset 数据集准备
-    - [x] Load file path文件目录导入
-    - [x] 底图与标注文件的对应关系
-    - [ ] 标注文件的格式化
-    - [ ] one-hot 编码
-- [ ] DeepLab 模型准备
-    - [ ] 迁移学习
-- [ ] Test   测试
-- [ ] Result 结果展示
  ## 数据集
 ### 数据
 * 训练数据集包括803张卫星图片，RGB格式，尺寸2448 * 2448
@@ -37,3 +27,17 @@
 * 需要注意的是"未知土地"(0,0,0)并不是一个真实的类别，在这个计算中也没有起到作用。所以有效的mIoU是前6个类别IoU的均值。
 
 ## 结果展示
+<table border=0>
+<tr>
+    <td>
+        <img src="/img/6399_sat.jpg" border=0 margin=1 width=512>
+    </td>
+    <td>
+        <img src="/img/6399_mask.png" border=0 margin=1 width=512>
+    </td>
+</tr>
+</table>
+
+## 致谢
+该代码部分借鉴了下面这个仓库。
+- [rishizek's repo tensorflow-deeplab-v3-plus](https://github.com/rishizek/tensorflow-deeplab-v3-plus)
