@@ -21,10 +21,10 @@ from tensorflow.python import debug as tf_debug
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--data_dir', type=str, default='dataset/valid_sat',
+parser.add_argument('--data_dir', type=str, default='dataset/land_train',
                     help='The directory containing the image data.')
 
-parser.add_argument('--output_dir', type=str, default='./dataset/valid_mask_test',
+parser.add_argument('--output_dir', type=str, default='./dataset/last_result',
                     help='Path to the directory to generate the inference results')
 
 parser.add_argument('--infer_data_list', type=str, default='./dataset/sample_images_list.txt',
@@ -73,7 +73,7 @@ def main(unused_argv):
     # examples = dataset_util.read_examples_list(FLAGS.infer_data_list)
     # image_files = [os.path.join(FLAGS.data_dir, filename) for filename in examples]
     examples = os.listdir(FLAGS.data_dir)
-    image_files = [os.path.join(FLAGS.data_dir, filename) for filename in examples]
+    image_files = [os.path.join(FLAGS.data_dir, filename) for filename in examples if filename.endswith('.jpg')]
     predictions = model.predict(
         input_fn=lambda: preprocessing.eval_input_fn(image_files),
         hooks=pred_hooks)

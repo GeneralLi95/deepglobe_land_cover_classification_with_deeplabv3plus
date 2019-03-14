@@ -120,8 +120,8 @@ class BFSClear:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--image', type=str, help='input image directory', default='./dataset/valid_mask1.24')
-    parser.add_argument('-o', '--output', type=str, help='output image directory', default='./dataset/cleared_result')
+    parser.add_argument('-i', '--image', type=str, help='input image directory', default='./dataset/last_result')
+    parser.add_argument('-o', '--output', type=str, help='output image directory', default='./dataset/cleared_last_result')
     args = parser.parse_args()
 
     clearer = BFSClear(thres=2000, verbose=0, image_shape=(1224, 1224))

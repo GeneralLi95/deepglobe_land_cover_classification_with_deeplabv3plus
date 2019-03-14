@@ -29,6 +29,10 @@
 
 ## Result 
 
+
+![](./img/6399_sat.jpg)
+![](./img/6399_mask.png)
+
 ## Acknowledgment
 This repo borrows code heavily from
 - [rishizek's repo tensorflow-deeplab-v3-plus](https://github.com/rishizek/tensorflow-deeplab-v3-plus)
