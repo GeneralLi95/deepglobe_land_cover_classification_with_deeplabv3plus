@@ -4,9 +4,9 @@
 ### 数据
 * 训练数据集包括803张卫星图片，RGB格式，尺寸2448 * 2448
 * 图像分辨率为50cm，由 DigitalGlobe's 卫星提供
-* 可通过下载页点击"Starting Kit"下载数据。
-* 可通过此 [百度云链接](https://pan.baidu.com/s/1kRSHGxmaeuBqACGcFaqhvw) 下载
- ### 标注
+* 可通过下载页点击"Starting Kit"下载数据。(根据主办方的版权声明，下载数据请到原竞赛网页，即使竞赛已经结束，仍然可以参加)
+
+### 标注
 
 * 每张卫星图片有一张与之对应的标注图片。这张标注图片也是RGB格式，一共分为7类，每类对应的图像(R,G,B)编码对应关系如下：
     * 城市土地： 0，255，255，浅蓝色，人造建筑（可以忽略道路）
@@ -39,5 +39,6 @@
 </table>
 
 ## 致谢
-该代码部分借鉴了下面这个仓库。
 - [rishizek's repo tensorflow-deeplab-v3-plus](https://github.com/rishizek/tensorflow-deeplab-v3-plus)
+- [DeepGlobe_2018_A_CVPR_2018_paper](http://openaccess.thecvf.com/content_cvpr_2018_workshops/w4/html/Demir_DeepGlobe_2018_A_CVPR_2018_paper.html)
+- [deepglobe](http://deepglobe.org/).
