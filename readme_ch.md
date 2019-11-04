@@ -55,10 +55,10 @@
     * land_train  (存放下载下来的数据 )
     * onechannel_label (运行 rgb2label.py 生成)
     * voc_train_all.record (运行 create_tf_record_all.py 生成 )
-    * ini_checkpoints
+  * ini_checkpoints
       * resnet_v2_101  (resnet_v2_101.ckpt and train.graph)
-    * rgb2label.py
-    * create_tf_record_all.py
+  * rgb2label.py
+  * create_tf_record_all.py
 
 
 
@@ -73,6 +73,3 @@
 3. deeplab_model.py  deeplab模型基本不用动
 
 4. train.py 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
-
-
-create_pascal_tf_record,py 建立 tfrecord 文件，该代码执行后分别建立 voc_train.record 和 voc_val.record，最终没有使用该文件
