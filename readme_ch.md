@@ -16,10 +16,11 @@
     * 水系：0，0，255，深蓝色，江河湖海湿地
     * 荒地：255，255，255, 白色，山地，沙漠，戈壁，沙滩，没有植被的地方
     * 未知土地： 0，0，0，黑色，云层遮盖或其他因素
-* 卫星图片和与其对应的标注图片的命名格式为\<id>_sat.jpg和\<id>_mask.png,\<id>是一个随机的整数。
+* 卫星图片和与其对应的标注图片的命名格式为 id_sat.jpg和id_mask.png,id 是一个随机的整数。
 * 需要注意：
     * 由于压缩，标注图像的值可能不是准确的目标颜色值。当转换到标签时，请将每个R/G/B通道按128阈值二值化。
     * 高分辨率卫星图像的土地覆被分割仍然是一个探索性的任务，由于标注多类分割的代价很大，标签还远远不够完善。此外，我们故意不标注道路，因为它已经包含在一个单独的道路提取挑战赛中。
+
 ### 评价指标
 * 我们将采用像素级别的平均IoU分数作为评价指标。
     * IoU的定义是：交集/并集，公式：  预测准确的面积/(预测准确面积 + 没有预测出来的面积 + 预测错误的面积)
@@ -42,3 +43,34 @@
 - [rishizek's repo tensorflow-deeplab-v3-plus](https://github.com/rishizek/tensorflow-deeplab-v3-plus)
 - [DeepGlobe_2018_A_CVPR_2018_paper](http://openaccess.thecvf.com/content_cvpr_2018_workshops/w4/html/Demir_DeepGlobe_2018_A_CVPR_2018_paper.html)
 - [deepglobe](http://deepglobe.org/).
+
+---
+## 如何复现此工作
+
+### 文件结构组织
+
+
+* deepglobe_land
+  * dataset
+    * land_train  (存放下载下来的数据 )
+    * onechannel_label (运行 rgb2label.py 生成)
+    * voc_train_all.record (运行 create_tf_record_all.py 生成 )
+  * rgb2label.py
+  * ini_checkpoints
+    * resnet_v2_101  (resnet_v2_101.ckpt and train.graph)
+
+
+
+### 各段代码功能
+
+1. rgb2label.py 数据标注文件 id_mask.png 是 RGB 三通道图像，输入训练集的时候必须首先转为单通道图像，故该代码用于执行，图像到单通道图像的转换，此处原始卫星图像 id_sat.jpg, 标注图像 id_mask.png，单通道标注图像 id_label.png 。  这段代码可以作为一段工具代码在其他地方使用。
+
+
+2. create_tf_record_all.py  建立 tfrecord 文件，该代码执行后，直接将 land_train文件夹里的所有 id_sat.jpg 文件与 onechannel_label 里的 id_label 文件打包生成一个 voc_train_all.record文件，该文件中包含了数据集和验证集，不需要手动区分数据集验证集，训练过程中会随机选择一部分作为数据集，另一部分作为验证集。
+
+3. deeplab_model.py  deeplab模型基本不用动
+
+4. train.py 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
+
+
+create_pascal_tf_record,py 建立 tfrecord 文件，该代码执行后分别建立 voc_train.record 和 voc_val.record，最终没有使用该文件
