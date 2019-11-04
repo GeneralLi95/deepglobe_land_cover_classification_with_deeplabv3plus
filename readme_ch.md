@@ -1,6 +1,6 @@
 # DeepGlobe Land Cover Classification Challenge 土地利用分类竞赛
-
- ## 数据集
+ [English version](https://github.com/GeneralLi95/deepglobe_land_cover_classification_with_deeplabv3plus/blob/master/readme.md)
+## 数据集
 ### 数据
 * 训练数据集包括803张卫星图片，RGB格式，尺寸2448 * 2448
 * 图像分辨率为50cm，由 DigitalGlobe's 卫星提供
