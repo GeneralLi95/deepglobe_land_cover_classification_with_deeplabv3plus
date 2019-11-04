@@ -55,9 +55,11 @@
     * land_train  (存放下载下来的数据 )
     * onechannel_label (运行 rgb2label.py 生成)
     * voc_train_all.record (运行 create_tf_record_all.py 生成 )
-  * rgb2label.py
-  * ini_checkpoints
-    * resnet_v2_101  (resnet_v2_101.ckpt and train.graph)
+    * ini_checkpoints
+      * resnet_v2_101  (resnet_v2_101.ckpt and train.graph)
+    * rgb2label.py
+    * create_tf_record_all.py
+
 
 
 
