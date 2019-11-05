@@ -1,5 +1,5 @@
 # DeepGlobe Land Cover Classification Challenge
- [中文 readme](https://github.com/GeneralLi95/deepglobe_land_cover_classification_with_deeplabv3plus/blob/master/readme_ch.md)
+ English | [简体中文](https://github.com/GeneralLi95/deepglobe_land_cover_classification_with_deeplabv3plus/blob/master/readme_ch.md)
 ## DATASET
 ### DATA
 * The training data for Land Cover Challenge contains 803 satellite imagery in RGB, size 2448x2448.
