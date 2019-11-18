@@ -52,24 +52,26 @@
 
 * deepglobe_land
   * dataset
-    * land_train  (存放下载下来的数据 )
-    * onechannel_label (运行 rgb2label.py 生成)
-    * voc_train_all.record (运行 create_tf_record_all.py 生成 )
+    * land_train  (存放下载下来的原始数据 )
+    * onechannel_label (内部数据通过运行 rgb2label.py 生成)
+    * voc_train_all.record (通过运行 create_tf_record_all.py 生成 )
   * ini_checkpoints
       * resnet_v2_101  (resnet_v2_101.ckpt and train.graph)
+  * utils (工具包)
   * rgb2label.py
   * create_tf_record_all.py
+  * deeplab_model.py
 
 
 
 
 ### 各段代码功能
 
-1. rgb2label.py 数据标注文件 id_mask.png 是 RGB 三通道图像，输入训练集的时候必须首先转为单通道图像，故该代码用于执行，图像到单通道图像的转换，此处原始卫星图像 id_sat.jpg, 标注图像 id_mask.png，单通道标注图像 id_label.png 。  这段代码可以作为一段工具代码在其他地方使用。
+1. **rgb2label.py** 数据标注文件 id_mask.png 是 RGB 三通道图像，输入训练集的时候必须首先转为单通道图像，故该代码用于执行，图像到单通道图像的转换，此处原始卫星图像 id_sat.jpg, 标注图像 id_mask.png，单通道标注图像 id_label.png 。  这段代码可以作为一段工具代码在其他地方使用。
 
 
-2. create_tf_record_all.py  建立 tfrecord 文件，该代码执行后，直接将 land_train文件夹里的所有 id_sat.jpg 文件与 onechannel_label 里的 id_label 文件打包生成一个 voc_train_all.record文件，该文件中包含了数据集和验证集，不需要手动区分数据集验证集，训练过程中会随机选择一部分作为数据集，另一部分作为验证集。
+2. **create_tf_record_all.py**  建立 tfrecord 文件，该代码执行后，直接将 land_train文件夹里的所有 id_sat.jpg 文件与 onechannel_label 里的 id_label 文件打包生成一个 voc_train_all.record文件，该文件中包含了数据集和验证集，不需要手动区分数据集验证集，训练过程中会随机选择一部分作为数据集，另一部分作为验证集。
 
-3. deeplab_model.py  deeplab模型基本不用动
+3. **deeplab_model.py**  deeplab模型基本不用动
 
-4. train.py 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
+4. **train.py** 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
