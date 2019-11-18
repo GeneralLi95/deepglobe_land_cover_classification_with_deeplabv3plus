@@ -1,8 +1,8 @@
 #!usr/bin/env python  
-#-*- coding:utf-8 _*-  
-""" 
-@author:yaoli 
-@file: rgb2label.py 
+#-*- coding:utf-8 _*-
+"""
+@author:yaoli
+@file: rgb2label.py
 @time: 2018/12/21
 The mask.png are RGB img. We have to change it into a one-chanel img.
 """
@@ -12,11 +12,13 @@ import cv2
 import os
 from tqdm import tqdm
 import scipy.misc
+import imageio
 
 def color2annotation(input_path, output_path):
 
-    image = scipy.misc.imread(input_path)
-
+    # image = scipy.misc.imread(input_path)
+    # imread is deprecated in SciPy 1.0.0, and will be removed in 1.2.0. Use imageio.imread instead.
+    image = imageio.imread(input_path)
     image = (image >= 128).astype(np.uint8)
     image = 4 * image[:, :, 0] + 2 * image[:, :, 1] + image[:, :, 2]
     cat_image = np.zeros((2448,2448), dtype=np.uint8)
@@ -28,7 +30,9 @@ def color2annotation(input_path, output_path):
     cat_image[image == 7] = 5  # (White: 111) Barren land
     cat_image[image == 0] = 6  # (Black: 000) Unknown
 
-    scipy.misc.imsave(output_path, cat_image)
+
+    # scipy.misc.imsave(output_path, cat_image)
+    imageio.imsave(output_path, cat_image)
     pass
 
 one_channel_label_path = 'dataset/land_train'
@@ -95,8 +99,3 @@ old encode part
 #     number = img_path.split('/')[2].split('_')[0]
 #     label_path = one_channel_label_path + '/' + number + '_label.png'
 #     rgb2label(input_path=img_path, output_path=label_path, color_codes = my_codes)
-
-
-
-
-
