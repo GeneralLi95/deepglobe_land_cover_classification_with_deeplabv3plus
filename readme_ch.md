@@ -62,16 +62,44 @@
   * create_tf_record_all.py
   * deeplab_model.py
 
+### 代码执行顺序与注意事项
 
+1. **reg2label.py** 数据标注文件 id_mask.png 是 RGB 三通道图像，输入训练集的时候必须首先转为单通道图像，故该代码用于执行，图像到单通道图像的转换，此处原始卫星图像 id_sat.jpg, 标注图像 id_mask.png，单通道标注图像 id_label.png 。  **这段代码可以作为一段工具代码在其他地方使用。**
 
-
-### 各段代码功能
-
-1. **rgb2label.py** 数据标注文件 id_mask.png 是 RGB 三通道图像，输入训练集的时候必须首先转为单通道图像，故该代码用于执行，图像到单通道图像的转换，此处原始卫星图像 id_sat.jpg, 标注图像 id_mask.png，单通道标注图像 id_label.png 。  这段代码可以作为一段工具代码在其他地方使用。
+   代码中
+   ```python
+   one_channel_label_path = 'dataset/land_train'
+   test_mask_path = 'dataset/onechannel_label'
+   ```
+   这两行指定了输入输出路径。
 
 
 2. **create_tf_record_all.py**  建立 tfrecord 文件，该代码执行后，直接将 land_train文件夹里的所有 id_sat.jpg 文件与 onechannel_label 里的 id_label 文件打包生成一个 voc_train_all.record文件，该文件中包含了数据集和验证集，不需要手动区分数据集验证集，训练过程中会随机选择一部分作为数据集，另一部分作为验证集。
+    ```python
+    parser.add_argument('--data_dir', type=str, default='./dataset/',
+                        help='Path to the directory containing the PASCAL VOC data.')
 
-3. **deeplab_model.py**  deeplab模型基本不用动
+    parser.add_argument('--output_path', type=str, default='./dataset',
+                        help='Path to the directory to create TFRecords outputs.')
 
-4. **train.py** 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
+    parser.add_argument('--image_data_dir', type=str, default='land_train',
+                        help='The directory containing the image data.')
+
+    parser.add_argument('--label_data_dir', type=str, default='onechannel_label',
+                        help='The directory containing the augmented label data.')
+    ```
+
+    这一段设置了默认的输入输出路径，如需修改可直接改源代码，或在命令行指定参数。
+
+
+
+3. **train.py** 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
+    **参数解释**
+    * train_epochs:
+
+
+### 支撑代码
+1. **utils** 自定义的 package，包含两个工具文件
+
+
+2. **deeplab_model.py**  deeplab模型基本不用动
