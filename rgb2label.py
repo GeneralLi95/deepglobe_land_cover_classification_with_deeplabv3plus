@@ -1,4 +1,3 @@
-#!usr/bin/env python  
 #-*- coding:utf-8 _*-
 """
 @author:yaoli
@@ -8,7 +7,6 @@ The mask.png are RGB img. We have to change it into a one-chanel img.
 """
 
 import numpy as np
-import cv2
 import os
 from tqdm import tqdm
 import scipy.misc

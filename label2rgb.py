@@ -1,16 +1,16 @@
-#!usr/bin/env python  
+
 # -*- coding:utf-8 _*-
-""" 
-@author:yaoli 
-@file: label2rgb.py.py 
+"""
+@author:yaoli
+@file: label2rgb.py.py
 @time: 2019/01/22
 Test change one_chanel label to 3 channel RGB image.
 """
 
-import numpy as np
-import cv2
-import scipy.misc
 import os
+
+import numpy as np
+import scipy.misc
 from tqdm import tqdm
 
 
