@@ -1,9 +1,8 @@
-#!usr/bin/env python  
 #-*- coding:utf-8 _*-  
-""" 
-@author:yaoli 
-@file: resize.py 
-@time: 2018/12/26 
+"""
+@author:yaoli
+@file: resize.py
+@time: 2018/12/26
 """
 from PIL import Image
 import os

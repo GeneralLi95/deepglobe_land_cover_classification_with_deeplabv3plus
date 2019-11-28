@@ -25,12 +25,20 @@ parser.add_argument('--clean_model_dir', action='store_true',
 
 parser.add_argument('--train_epochs', type=int, default=26,
                     help='Number of training epochs: '
-                         'For 30K iteration with batch size 6, train_epoch = 17.01 (= 30K * 6 / 10,582). '
-                         'For 30K iteration with batch size 8, train_epoch = 22.68 (= 30K * 8 / 10,582). '
-                         'For 30K iteration with batch size 10, train_epoch = 25.52 (= 30K * 10 / 10,582). '
-                         'For 30K iteration with batch size 11, train_epoch = 31.19 (= 30K * 11 / 10,582). '
-                         'For 30K iteration with batch size 15, train_epoch = 42.53 (= 30K * 15 / 10,582). '
-                         'For 30K iteration with batch size 16, train_epoch = 45.36 (= 30K * 16 / 10,582).')
+                         'For 30K iteration with batch size 2, train_epoch = 82.99 (= 30K * 2 / 723). '
+                         'For 30K iteration with batch size 4, train_epoch = 165.98 (= 30K * 4 / 723). '
+                         'For 30K iteration with batch size 6, train_epoch = 248.96 (= 30K * 6 / 723). '
+                         'For 30K iteration with batch size 8, train_epoch = 331.95 (= 30K * 8 / 723). '
+                         'For 30K iteration with batch size 10, train_epoch = 414.94 (= 30K * 10 / 723). '
+                         'For 30K iteration with batch size 11, train_epoch = 456.43 (= 30K * 11 / 723). '
+                         'For 30K iteration with batch size 15, train_epoch = 622.41 (= 30K * 15 / 723). '
+                         'For 30K iteration with batch size 16, train_epoch = 663.90 (= 30K * 16 / 723).')
+                         # 'For 30K iteration with batch size 6, train_epoch = 17.01 (= 30K * 6 / 10,582). '
+                         # 'For 30K iteration with batch size 8, train_epoch = 22.68 (= 30K * 8 / 10,582). '
+                         # 'For 30K iteration with batch size 10, train_epoch = 25.52 (= 30K * 10 / 10,582). '
+                         # 'For 30K iteration with batch size 11, train_epoch = 31.19 (= 30K * 11 / 10,582). '
+                         # 'For 30K iteration with batch size 15, train_epoch = 42.53 (= 30K * 15 / 10,582). '
+                         # 'For 30K iteration with batch size 16, train_epoch = 45.36 (= 30K * 16 / 10,582).')
 
 parser.add_argument('--epochs_per_eval', type=int, default=1,
                     help='The number of training epochs to run between evaluations.')
