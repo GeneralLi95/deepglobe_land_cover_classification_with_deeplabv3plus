@@ -64,4 +64,11 @@ This repo borrows code heavily from
   * deeplab_model.py
 
 
-### Code functions
+### Code functions and excution order
+1. **rgb2label.py** the satellite images `id_mask.png` are RGB images. This code change the RGB images to onechannel images so we can use them to generate `tfrecord` files.
+
+2. **create_tf_record_all.py** generate tfrecord files.
+
+3. **train.py**
+
+4.

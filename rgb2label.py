@@ -34,15 +34,15 @@ def color2annotation(input_path, output_path):
     imageio.imsave(output_path, cat_image)
     pass
 
-one_channel_label_path = 'dataset/land_train'
-test_mask_path = 'dataset/onechannel_label'
+rgb_label_path = 'dataset/land_train'
+onechannel_path = 'dataset/onechannel_label'
 
-filelist = os.listdir(one_channel_label_path)
+filelist = os.listdir(rgb_label_path)
 file_names = np.array([file.split('_')[0] for file in filelist if file.endswith('.png')], dtype=object)
 
 for filename in tqdm(file_names):
-    mask_path = os.path.join(one_channel_label_path, filename + '_mask.png')
-    label_path = os.path.join(test_mask_path, filename + '_label.png')
+    mask_path = os.path.join(rgb_label_path, filename + '_mask.png')
+    label_path = os.path.join(onechannel_path, filename + '_label.png')
     color2annotation(mask_path, label_path)
 
 
