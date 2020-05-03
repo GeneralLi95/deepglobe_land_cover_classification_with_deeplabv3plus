@@ -67,8 +67,31 @@ This repo borrows code heavily from
 ### Code functions and excution order
 1. **rgb2label.py** the satellite images `id_mask.png` are RGB images. This code change the RGB images to onechannel images so we can use them to generate `tfrecord` files.
 
-2. **create_tf_record_all.py** generate tfrecord files.
+2. **create_tf_record_all.py** generate tfrecord files. The input and output directory were set in the code follows.
+    ```python
+    parser.add_argument('--data_dir', type=str, default='./dataset/',
+                        help='Path to the directory containing the PASCAL VOC data.')
 
+    parser.add_argument('--output_path', type=str, default='./dataset',
+                        help='Path to the directory to create TFRecords outputs.')
+
+    parser.add_argument('--image_data_dir', type=str, default='land_train',
+                        help='The directory containing the image data.')
+
+    parser.add_argument('--label_data_dir', type=str, default='onechannel_label',
+                        help='The directory containing the augmented label data.')
+    ```
 3. **train.py**
+   
+4. **inference.py** To apply semantic segmentation to your images.
 
-4.
+### Other useful codes
+1. **utils** a toolkit
+
+2. **deeplab_model.py**  the deeplabV3+ model
+
+3. tensorboard 
+    ```
+    tensorboard --logdir MODEL_DIR
+    ```
+   If you want to run Tensorboard on a remote server. [This stackoverflow discussion](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server) may be help

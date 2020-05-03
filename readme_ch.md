@@ -95,11 +95,54 @@
 
 3. **train.py** 需要在里面进行一些参数设置，类别，训练集合验证集的数据比，这里我们设置训练集723张图片，验证集80张。
     **参数解释**
-    * train_epochs:
+    **epoch**:
+    > In Deep Learning, an epoch is a hyperparameter which is defined before training a model. One epoch is when an entire dataset is passed both forward and backward through the neural network only once.
 
+    1个 epoch 意味着所有数据通过神经网络一遍
+    **batch_size**:
+    > A batch is the total number of training examples present in a single batch and an iteration is the number of batches needed to complete one epoch.
+
+    训练数据不可能一次性全部通过神经网络，所以需要分为不同的 batch。batch_size 大小将影响占用内存的数量。
+    **iteration**:
+    > If we divide a dataset of 2000 training examples into 500 batches, then 4 iterations will complete 1 epoch
+
+    迭代几个循环
+
+    **max_iter**:
+
+    最大迭代次数，也是训练停止的条件。
+
+    **learning rate**:
+    > Learning rate might be the most important hyper parameter in deep learning, as learning rate decides how much gradient to be back propagated.
+
+    学习率，决定模型收敛速度的一个重要超参数，学习率大，下降快，但可能陷入震荡，学习率小，下降慢，却容易获得收敛。
+    ![学习率](https://i.loli.net/2019/11/20/jpqVeSfFwrgkBO5.png)
+
+    **learning_rate_policy**:
+    学习率函数，可选参数为 poly(polynomial function 多项式函数), piece wise
+
+
+4. **inference.py** 将模型结果应用到新的图片上，实现分割。
 
 ### 支撑代码
 1. **utils** 自定义的 package，包含两个工具文件
 
 
 2. **deeplab_model.py**  deeplab模型基本不用动
+    函数 **atrous_spatial_pyramid_pooling**:空洞卷积空间金字塔池化
+    atrous_rate 空洞卷积膨胀率，空洞卷积的核心指标。
+
+    函数 **deeplab_v3_plus_generator** deeplabv3+ 网络生成器
+
+    函数 **deeplabv3_plus_model_fn** 模型方程
+
+3. tensorboard 可视化
+
+    ```
+    tensorboard --logdir MODEL_DIR
+    ```
+    如果在服务器上运行，需要在本地浏览器查看的话，可以在 ssh 链接的时候将服务器的一个端口和本地端口绑定。
+
+    [参考 Stack Overflow](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
+
+
