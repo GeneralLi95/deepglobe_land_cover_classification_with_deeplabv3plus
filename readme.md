@@ -46,6 +46,17 @@ This repo borrows code heavily from
 - [DeepGlobe_2018_A_CVPR_2018_paper](http://openaccess.thecvf.com/content_cvpr_2018_workshops/w4/html/Demir_DeepGlobe_2018_A_CVPR_2018_paper.html)
 - [deepglobe](http://deepglobe.org/).
 
+## Cite us
+```
+@INPROCEEDINGS{9064236,  
+author={Y. {Li} and L. {Chen}},  
+booktitle={2019 IEEE 5th International Conference on Computer and Communications (ICCC)},   
+title={Land Cover Classification for High Resolution Remote Sensing Images with Atrous Convolution and BFS},   year={2019},  
+volume={},  
+number={},  
+pages={1808-1813},}
+```
+
 ---
 
 ## How to implement this repo?
